@@ -228,14 +228,27 @@ const ClientOnboardingForm = () => {
         </div>
       </form>
 
-      <h2 className="mt-4">Client List</h2>
-      <ul className="list-group">
+      <h2 className="mt-4 ">Client List</h2>
+      <ul className="list-group p-4">
         {clients.map((client) => (
           <li
             key={client.id}
-            className="list-group-item d-flex justify-content-between align-items-center"
+            className="pt-3 list-group-item d-flex justify-content-between align-items-center"
           >
-            {client.firstName} {client.lastName}
+            <div className="flex">
+              <div className="row">
+                <div className="col">
+                  <div>First Name: {client.firstName}</div>
+                  <div>Last Name: {client.lastName}</div>
+                  <div>Address: {client.address}</div>
+                  <div>City: {client.city}</div>
+                  <div>Postal Code: {client.postalCode}</div>
+                  <div>Country {client.country}</div>
+                  <div>Email: {client.email}</div>
+                  <div>Contact No: {client.contactNo}</div>
+                </div>
+              </div>
+            </div>
             <div>
               <button
                 className="btn btn-warning me-2"
