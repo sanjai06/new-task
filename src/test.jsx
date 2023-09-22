@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ClientOnboardingForm = () => {
   const initialFormData = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    country: '',
-    email: '',
-    contactNo: '',
-    type: 'Named',
-    province: 'Ontario',
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+    email: "",
+    contactNo: "",
+    type: "Named",
+    province: "Ontario",
     directors: [],
     shareholders: [],
   };
@@ -62,33 +62,138 @@ const ClientOnboardingForm = () => {
     <div className="container mt-4">
       <h1 className="text-center mb-4">Client Onboarding Form</h1>
       <form onSubmit={handleSubmit}>
-        <h2>Section 1</h2>
-        <div className="row mb-3">
-          <div className="col-md-6">
+        <form onSubmit={handleSubmit}>
+          <h2>Section 1</h2>
+          <div className="row mb-3">
+            <div className="col-md-6 mb-3">
+              <label htmlFor="firstName" className="form-label">
+                First Name:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="firstName"
+                placeholder="First Name"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <label htmlFor="lastName" className="form-label">
+                Last Name:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="lastName"
+                placeholder="Last Name"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="address" className="form-label">
+              Address:
+            </label>
             <input
               type="text"
               className="form-control"
-              placeholder="First Name"
-              name="firstName"
-              value={formData.firstName}
+              id="address"
+              placeholder="Address"
+              name="address"
+              value={formData.address}
               onChange={handleInputChange}
               required
             />
           </div>
-          <div className="col-md-6">
+          <div className="row mb-3">
+            <div className="col-md-6 mb-3">
+              <label htmlFor="city" className="form-label">
+                City:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="city"
+                placeholder="City"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <label htmlFor="postalCode" className="form-label">
+                Postal Code:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="postalCode"
+                placeholder="Postal Code"
+                name="postalCode"
+                value={formData.postalCode}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="country" className="form-label">
+              Country:
+            </label>
             <input
               type="text"
               className="form-control"
-              placeholder="Last Name"
-              name="lastName"
-              value={formData.lastName}
+              id="country"
+              placeholder="Country"
+              name="country"
+              value={formData.country}
               onChange={handleInputChange}
               required
             />
           </div>
-        </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email:
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="contactNo" className="form-label">
+              Contact No:
+            </label>
+            <input
+              type="tel"
+              className="form-control"
+              id="contactNo"
+              placeholder="Contact No"
+              name="contactNo"
+              value={formData.contactNo}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+
+          {/* Section 2 and buttons remain unchanged */}
+        </form>
+
         {/* Repeat similar input fields for the rest of Section 1 */}
-        
+
         <h2>Section 2</h2>
         <div className="mb-3">
           <label>Type:</label>
@@ -103,10 +208,15 @@ const ClientOnboardingForm = () => {
           </select>
         </div>
         {/* Render dropdowns and tables for Directors and Shareholders */}
-        
+
         <div className="d-grid gap-2">
-          <button type="submit" className={`btn ${editingClientId !== null ? 'btn-primary' : 'btn-success'}`}>
-            {editingClientId !== null ? 'Update' : 'Submit'}
+          <button
+            type="submit"
+            className={`btn ${
+              editingClientId !== null ? "btn-primary" : "btn-success"
+            }`}
+          >
+            {editingClientId !== null ? "Update" : "Submit"}
           </button>
           <button
             type="button"
@@ -121,13 +231,22 @@ const ClientOnboardingForm = () => {
       <h2 className="mt-4">Client List</h2>
       <ul className="list-group">
         {clients.map((client) => (
-          <li key={client.id} className="list-group-item d-flex justify-content-between align-items-center">
+          <li
+            key={client.id}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
             {client.firstName} {client.lastName}
             <div>
-              <button className="btn btn-warning me-2" onClick={() => handleEdit(client.id)}>
+              <button
+                className="btn btn-warning me-2"
+                onClick={() => handleEdit(client.id)}
+              >
                 Edit
               </button>
-              <button className="btn btn-danger" onClick={() => handleDelete(client.id)}>
+              <button
+                className="btn btn-danger"
+                onClick={() => handleDelete(client.id)}
+              >
                 Delete
               </button>
             </div>
