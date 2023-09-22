@@ -59,12 +59,12 @@ const ClientOnboardingForm = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-2 col-md-6">
       <h1 className="text-center mb-4">Client Onboarding Form</h1>
       <form onSubmit={handleSubmit}>
         <form onSubmit={handleSubmit}>
           <h2>Section 1</h2>
-          <div className="row mb-3">
+          <div className="row mb-2 ">
             <div className="col-md-6 mb-3">
               <label htmlFor="firstName" className="form-label">
                 First Name:
